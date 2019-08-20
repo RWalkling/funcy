@@ -1,6 +1,6 @@
 {
   "name": "@gecks/funcy",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Some TypeScript utilities for working with lazy values as represented by a simple function",
   "main": "index.js",
   "scripts": {
