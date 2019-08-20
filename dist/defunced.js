@@ -1,0 +1,19 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.fmap = exports.defunc = void 0;
+
+const isFunction = value => typeof value === 'function';
+
+const defunc = value => isFunction(value) ? value() : value;
+
+exports.defunc = defunc;
+
+const fmap = (value, func) => () => func(defunc(value));
+
+exports.fmap = fmap;
+var _default = defunc;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9kZWZ1bmNlZC50cyJdLCJuYW1lcyI6WyJpc0Z1bmN0aW9uIiwidmFsdWUiLCJkZWZ1bmMiLCJmbWFwIiwiZnVuYyJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUdBLE1BQU1BLFVBQVUsR0FBT0MsS0FBSixJQUFxQyxPQUFPQSxLQUFQLEtBQWlCLFVBQXpFOztBQUVPLE1BQU1DLE1BQU0sR0FBT0QsS0FBSixJQUE4QkQsVUFBVSxDQUFjQyxLQUFkLENBQVYsR0FBaUNBLEtBQUssRUFBdEMsR0FBMkNBLEtBQXhGOzs7O0FBQ0EsTUFBTUUsSUFBSSxHQUFHLENBQU9GLEtBQVAsRUFBaUJHLElBQWpCLEtBQStELE1BQU1BLElBQUksQ0FBQ0YsTUFBTSxDQUFDRCxLQUFELENBQVAsQ0FBdEY7OztlQUVRQyxNIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHR5cGUgRnVuY3k8VD4gPSBUIHwgKCgpID0+IFQpO1xyXG5leHBvcnQgdHlwZSBEZWZ1bmNlZDxUPiA9IFQgZXh0ZW5kcyAoKSA9PiBpbmZlciBSID8gUiA6IFRcclxuXHJcbmNvbnN0IGlzRnVuY3Rpb24gPSA8VD4odmFsdWU6IGFueSk6IHZhbHVlIGlzICgpID0+IFQgPT4gdHlwZW9mIHZhbHVlID09PSAnZnVuY3Rpb24nO1xyXG5cclxuZXhwb3J0IGNvbnN0IGRlZnVuYyA9IDxUPih2YWx1ZTogVCk6IERlZnVuY2VkPFQ+ID0+IGlzRnVuY3Rpb248RGVmdW5jZWQ8VD4+KHZhbHVlKSA/IHZhbHVlKCkgOiB2YWx1ZSBhcyBEZWZ1bmNlZDxUPjtcclxuZXhwb3J0IGNvbnN0IGZtYXAgPSA8VCwgUj4odmFsdWU6IFQsIGZ1bmM6ICh2YWx1ZTogRGVmdW5jZWQ8VD4pID0+IFIpOiBGdW5jeTxSPiA9PiAoKSA9PiBmdW5jKGRlZnVuYyh2YWx1ZSkpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZGVmdW5jO1xyXG4iXX0=
