@@ -4,12 +4,13 @@
   "description": "Some TypeScript utilities for working with lazy values as represented by a simple function",
   "main": "index.js",
   "scripts": {
-    "typecheck": "tsc",
+    "typecheck": "tsc --noEmit",
     "compile": "babel src --out-dir dist --extensions \".ts\"",
     "execute": "node dist/main.js",
     "make": "npm run compile && npm run execute",
     "full-run": "npm run typecheck && npm run make",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc --emitDeclarationOnly && npm run compile"
   },
   "repository": {
     "url": "https://github.com/RWalkling/funcy"
@@ -30,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.2",
     "jest": "^24.9.0"
   }
 }
