@@ -8,13 +8,15 @@
     "contents": "lib"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "typecheck:source": "tsc --build src/tsconfig-check.json",
+    "typecheck:tests": "tsc --build test",
     "compile": "babel src --out-dir lib --extensions \".ts\"",
     "execute": "node lib/main.js",
     "make": "npm run compile && npm run execute",
-    "full-run": "npm run typecheck && npm run make",
+    "full-run": "npm run typecheck:source && npm run make",
     "test": "jest",
-    "prepublish": "tsc --emitDeclarationOnly && npm run compile"
+    "build:types": "tsc --build src",
+    "ready": "npm run typecheck:tests && npm run build:types && npm run compile"
   },
   "repository": {
     "url": "https://github.com/RWalkling/funcy"
