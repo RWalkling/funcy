@@ -17,7 +17,7 @@
     "test": "jest",
     "build:types": "tsc --build src",
     "ready": "npm run typecheck:tests && npm run build:types && npm run compile",
-    "dry": "np patch --yolo --no-publish --no-release-draft --contents lib"
+    "release": "np"
   },
   "repository": {
     "url": "https://github.com/RWalkling/funcy"
@@ -40,6 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "@types/jest": "^24.0.18",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "np": "^5.0.3"
   }
 }
