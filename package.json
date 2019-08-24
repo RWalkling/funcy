@@ -7,6 +7,9 @@
   "np": {
     "contents": "lib"
   },
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "typecheck:source": "tsc --build src/tsconfig-check.json",
     "typecheck:tests": "tsc --build test",
