@@ -16,7 +16,8 @@
     "full-run": "npm run typecheck:source && npm run make",
     "test": "jest",
     "build:types": "tsc --build src",
-    "ready": "npm run typecheck:tests && npm run build:types && npm run compile"
+    "ready": "npm run typecheck:tests && npm run build:types && npm run compile",
+    "dry": "np patch --yolo --no-publish --no-release-draft --contents lib"
   },
   "repository": {
     "url": "https://github.com/RWalkling/funcy"
