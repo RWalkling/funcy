@@ -5,6 +5,10 @@
   },
   "files": [
     "index.ts",
-    "defunced.ts"
+    "defunced.ts",
+    "funcyArray/cache.ts",
+    "funcyArray/funcyArray.ts",
+    "funcyArray/index.ts",
+    "augmentations/global.ts"
   ]
 }
