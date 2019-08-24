@@ -31,5 +31,5 @@ export default class Cache<T> extends Map<T, [number, Defunced<T>]> {
 
         if (entry![1] === None) return entry![1] = defunc(value);
         return entry![1];
-    };
+    }
 }

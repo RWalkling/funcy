@@ -11,7 +11,8 @@ type MappedDefunc<TTuple extends TupleOf<unknown>> = {
 
 const propertyKeyIsIndex = (propertyKey: PropertyKey) => typeof propertyKey === 'string' && /^\d+$/.test(propertyKey);
 
-export default <Container extends TupleOf<Primitives>, TArray extends TupleOf<Container[number]>>(array?: TArray): MappedDefunc<TArray> => {
+export default <Container extends TupleOf<Primitives>,
+    TArray extends TupleOf<Container[number]> | unknown[] = unknown[]>(array?: TArray): MappedDefunc<TArray> => {
     const cache = new Cache<TArray[keyof TArray]>(array as any);
 
     const proxy = new Proxy(array !== undefined ? array : [], {

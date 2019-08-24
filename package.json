@@ -10,13 +10,20 @@
   "scripts": {
     "typecheck:source": "tsc --build src/tsconfig-check.json",
     "typecheck:tests": "tsc --build test",
+    "typecheck": "npm run typecheck:source && npm run typecheck:tests",
+    "lint:source": "eslint src/**",
+    "lint:tests": "eslint test/**",
+    "lint": "npm run lint:source && npm run lint:tests",
+    "lint:source-fix": "eslint --fix src/**",
+    "lint:tests-fix": "eslint --fix test/**",
+    "lint:fix": "npm run lint:source-fix && npm run lint:tests-fix",
     "compile": "babel src --out-dir lib --extensions \".ts\"",
     "execute": "node lib/main.js",
     "make": "npm run compile && npm run execute",
     "full-run": "npm run typecheck:source && npm run make",
     "test": "jest",
     "build:types": "tsc --build src",
-    "ready": "npm run typecheck:tests && npm run build:types && npm run compile",
+    "ready": "npm run lint && npm run typecheck && npm run build:types && npm run compile",
     "release": "np"
   },
   "repository": {
