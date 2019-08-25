@@ -18,12 +18,10 @@
     "lint:tests-fix": "eslint --fix test/**",
     "lint:fix": "npm run lint:source-fix && npm run lint:tests-fix",
     "compile": "babel src --out-dir lib --extensions \".ts\"",
-    "execute": "node lib/main.js",
-    "make": "npm run compile && npm run execute",
-    "full-run": "npm run typecheck:source && npm run make",
     "test": "jest",
-    "build:types": "tsc --build src",
-    "ready": "npm run lint && npm run typecheck && npm run build:types && npm run compile",
+    "build:declarations": "tsc --build src",
+    "clean:lib": "rimraf lib",
+    "ready": "npm run clean:lib && npm run lint && npm run typecheck && npm run build:declarations && npm run compile",
     "release": "np"
   },
   "repository": {
@@ -48,6 +46,7 @@
     "@typescript-eslint/parser": "^2.0.0",
     "@types/jest": "^24.0.18",
     "jest": "^24.9.0",
-    "np": "^5.0.3"
+    "np": "^5.0.3",
+    "rimraf": "^3.0.0"
   }
 }
