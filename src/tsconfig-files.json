@@ -6,6 +6,7 @@
   "files": [
     "index.ts",
     "defunced.ts",
+    "common.ts",
     "funcyArray/cache.ts",
     "funcyArray/funcyArray.ts",
     "funcyArray/index.ts",

@@ -1,9 +1,7 @@
 import { Defunced } from '../defunced';
 import '../augmentations/global';
 import Cache from './cache';
-
-type Primitives = string | number | symbol | boolean | object | undefined | bigint
-type TupleOf<T> = [...T[]] | [T, ...T[]];
+import { Primitives, TupleOf } from '../common';
 
 type MappedDefunc<TTuple extends TupleOf<unknown>> = {
     [Key in keyof TTuple]: Defunced<TTuple[Key]>;
