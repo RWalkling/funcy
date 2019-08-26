@@ -1,4 +1,4 @@
-export type Funcy<F, T> = (() => F) | T;
+export declare type Funcy<F, T> = ([F] extends [never] ? never : () => F) | T;
 
 export type DefuncInto<F, T> = [unknown] extends [F] ? T : F;
 
