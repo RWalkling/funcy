@@ -1,17 +1,17 @@
-import defunc, { Defunced } from '../defunced';
+import defunc, { DefuncGeneric, Funcy } from '../defunced';
 import '../augmentations/global';
 
-export const None = Symbol('Empty entry');
+const None = Symbol('Empty entry');
 
-export default class Cache<T> extends Map<T, [number, Defunced<T>]> {
-    constructor(array?: T[]) {
+export default class Cache<R, T> extends Map<Funcy<R, T>, [number, DefuncGeneric<R, T>]> {
+    constructor(array?: Funcy<R, T>[]) {
         super(array === undefined
             ? undefined
             : array.map(value => [value, [1, None as any]])
         );
     }
 
-    public update(oldValue: T, newValue: T) {
+    public update(oldValue: Funcy<R, T>, newValue: Funcy<R, T>) {
         if (oldValue === newValue) return;
 
         const entryOld = this.get(oldValue);
@@ -24,12 +24,12 @@ export default class Cache<T> extends Map<T, [number, Defunced<T>]> {
         entryNew[0] += 1;
     }
 
-    public getDefunced(value: T): Defunced<T> | undefined {
+    public getDefunced(value: Funcy<R, T>): DefuncGeneric<R, T> | undefined {
         if (!this.has(value)) return undefined;
 
         const entry = this.get(value);
 
-        if (entry![1] === None) return entry![1] = defunc(value);
+        if (entry![1] === None as any) return entry![1] = defunc(value);
         return entry![1];
     }
 }

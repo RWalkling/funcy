@@ -1,4 +1,4 @@
-import funcyArray from '../src/funcyArray/funcyArray';
+import { funcyArray } from '../src/';
 
 describe('funcyArray', () => {
     describe('get items', () => {

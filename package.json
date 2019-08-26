@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "typecheck:source": "tsc --build src/tsconfig-check.json",
-    "typecheck:tests": "tsc --build test",
+    "typecheck:tests": "npm run clean:testlib && tsc --build test",
     "typecheck": "npm run typecheck:source && npm run typecheck:tests",
     "lint:source": "eslint src/**",
     "lint:tests": "eslint test/**",
@@ -21,6 +21,7 @@
     "test": "jest",
     "build:declarations": "tsc --build src",
     "clean:lib": "rimraf lib",
+    "clean:testlib": "rimraf test/lib",
     "ready": "npm run clean:lib && npm run lint && npm run typecheck && npm run build:declarations && npm run compile",
     "release": "np"
   },

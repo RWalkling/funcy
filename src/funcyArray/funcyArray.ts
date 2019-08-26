@@ -11,7 +11,7 @@ const propertyKeyIsIndex = (propertyKey: PropertyKey) => typeof propertyKey === 
 
 export default <Container extends TupleOf<Primitives>,
     TArray extends TupleOf<Container[number]> | unknown[] = unknown[]>(array?: TArray): MappedDefunc<TArray> => {
-    const cache = new Cache<TArray[keyof TArray]>(array as any);
+    const cache = new Cache(array as TArray[keyof TArray][]);
 
     const proxy = new Proxy(array !== undefined ? array : [], {
         set<TPropertyKey extends keyof TArray>(
@@ -31,10 +31,9 @@ export default <Container extends TupleOf<Primitives>,
         get: <TPropertyKey extends keyof TArray>(
             target: TArray,
             propertyKey: TPropertyKey,
-        ): TArray[TPropertyKey] | Defunced<TArray[keyof TArray]> | undefined =>
-            propertyKeyIsIndex(propertyKey)
-                ? cache.getDefunced(target[propertyKey])
-                : target[propertyKey],
+        ): TArray[TPropertyKey] | Defunced<TArray[TPropertyKey]> | undefined => propertyKeyIsIndex(propertyKey)
+            ? cache.getDefunced(target[propertyKey])
+            : target[propertyKey] as any,
     });
 
     return proxy as any;

@@ -1,4 +1,5 @@
-import defunc, { Defunced, fmap } from '../src/defunced';
+import defunc, { DefuncGeneric, fmap, Funcy } from '../src/';
+
 
 describe('defunc', () => {
     const testValues = ['', null, undefined, NaN, 0, false, Symbol(), 'str', 42, BigInt(0), {}, [5, 3]];
@@ -17,7 +18,9 @@ describe('defunc', () => {
 
 describe('map', () => {
     const application = <T, R>(value: T, func: (value: T) => R) => func(value);
-    const expectToBeSame = <T, R>(value: T, func: (value: Defunced<T>) => R) => defunc(fmap(value, func));
+    // const expectToBeSame = <T, R>(value: T, func: (value: Defunced<T>) => R) => defunc(fmap(value, func));
+    const expectToBeSame = <R, T, TReturn>(value: Funcy<R, T>, func: (value: DefuncGeneric<R, T>) => TReturn) => defunc(
+        fmap(value, func));
 
     const testValues: [(value: any) => unknown, ...unknown[]][] = [
         [x => x + 5, 1, 2, 3, 4, 8, 9, 10],

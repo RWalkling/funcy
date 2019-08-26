@@ -1,13 +1,11 @@
-export declare type Funcy<F, T> = ([F] extends [never] ? never : () => F) | T;
+export declare type Funcy<R, T> = (() => R) | T;
 
-export type DefuncInto<F, T> = [unknown] extends [F] ? T : F;
+export type DefuncGeneric<R, T> = [R] extends [never] ? T : R;
+export type Defunced<TFuncy> = TFuncy extends (() => infer R) ? R : TFuncy;
 
-type Defunced_<T> = [T] extends [(() => infer R)] ? R : Exclude<T, () => unknown>;
-export type Defunced<T> = Defunced_<NonNullable<T>>;
+const isFunction = <T>(value: any): value is () => unknown => typeof value === 'function';
 
-const isFunction = <T>(value: any): value is () => T => typeof value === 'function';
-
-export const defunc = <T>(value: T): Defunced<T> => isFunction<Defunced<T>>(value) ? value() : value as Defunced<T>;
-export const fmap = <T, R>(value: T, func: (value: Defunced<T>) => R) => () => func(defunc(value));
+export const defunc = <R, T>(value: Funcy<R, T>) => (isFunction(value) ? value() : value) as DefuncGeneric<R, T>;
+export const fmap = <R, T, TReturn>(value: Funcy<R, T>, func: (value: DefuncGeneric<R, T>) => TReturn) => () => func(defunc(value));
 
 export default defunc;
