@@ -1,7 +1,4 @@
-import { AsPrimitive, Primitives } from './common';
-
-type Funcy_<F extends Primitives, S extends Primitives> = (() => F) | S;
-export type Funcy<F, T> = Funcy_<AsPrimitive<F>, AsPrimitive<T>>;
+export type Funcy<F, T> = (() => F) | T;
 
 export type DefuncInto<F, T> = [unknown] extends [F] ? T : F;
 
